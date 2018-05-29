@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<pl.pharmaway.prezentacjatrilac.view.FixedScaledLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    app:fixedWidth="1920dp"
+    app:fixedHeight="1200dp"
+    >
+
+    <pl.pharmaway.prezentacjatrilac.view.FixedImageView
+        android:layout_width="1920dp"
+        android:layout_height="1200dp"
+        app:imageReference="@drawable/page8bg"
+        />
+
+    <pl.pharmaway.prezentacjatrilac.view.FixedImageView
+        android:layout_marginLeft="1081dp"
+        android:layout_marginTop="31dp"
+        android:layout_width="557dp"
+        android:layout_height="392dp"
+        app:imageReference="@drawable/p11_1"
+        android:id="@+id/p11_1"
+        />
+
+    <pl.pharmaway.prezentacjatrilac.view.FixedImageView
+        android:layout_marginLeft="883dp"
+        android:layout_marginTop="461dp"
+        android:layout_width="989dp"
+        android:layout_height="223dp"
+        app:imageReference="@drawable/p11_2"
+        android:id="@+id/p11_2"
+        />
+
+    <include
+        layout="@layout/footer" />
+</pl.pharmaway.prezentacjatrilac.view.FixedScaledLayout>

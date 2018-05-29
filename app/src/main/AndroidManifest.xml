@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="pl.pharmaway.prezentacjatrilac">
+
+    <uses-permission android:name="android.permission.INTERNET" />
+
+    <application
+        android:allowBackup="true"
+        android:icon="@mipmap/ic_launcher"
+        android:label="@string/app_name"
+        android:supportsRtl="true"
+        android:largeHeap="true"
+        android:theme="@style/AppTheme">
+        <activity android:name=".LoadingActivity"
+            android:noHistory="true"
+            >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity android:name=".Page1"
+            android:launchMode="singleTask"
+            />
+        <activity android:name=".Page2" />
+        <activity android:name=".Page3" />
+        <activity android:name=".Page4" />
+        <activity android:name=".Page5" />
+        <activity android:name=".Page6" />
+        <activity android:name=".Page7" />
+        <activity android:name=".Page8" />
+        <activity android:name=".Page9" />
+        <activity android:name=".Page10" />
+        <activity android:name=".Page11" />
+        <activity android:name=".Page12" />
+        <activity android:name=".Page13" />
+        <activity android:name=".Page14" />
+        <activity android:name=".Page15" />
+        <activity android:name=".Page16" />
+        <activity android:name=".Page17" />
+        <activity android:name=".PageSummary" />
+        <activity android:name=".FormActivity" />
+    </application>
+
+</manifest>

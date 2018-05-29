@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8"?>
+<pl.pharmaway.prezentacjatrilac.view.FixedScaledLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    app:fixedWidth="1920dp"
+    app:fixedHeight="1200dp"
+    >
+    <View
+        android:layout_width="1920dp"
+        android:layout_height="1200dp"
+        android:background="#FFF"
+        />
+
+    <pl.pharmaway.prezentacjatrilac.view.FixedImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom"
+        app:imageReference="@drawable/form1"
+        />
+
+    <TextView
+        android:id="@+id/agent"
+        android:layout_width="790dp"
+        android:layout_height="98dp"
+        android:background="#999999"
+        android:textSize="50dp"
+        android:textStyle="bold"
+        android:gravity="center"
+        android:textColor="@android:color/white"
+        android:hint="PRZEDSTAWICIEL MEDYCZNY"
+        android:textColorHint="#EEFFFFFF"
+        android:layout_marginTop="395dp"
+        android:layout_marginLeft="565dp"
+        />
+
+    <TextView
+        android:id="@+id/lekarz"
+        android:layout_width="790dp"
+        android:layout_height="98dp"
+        android:background="#999999"
+        android:textSize="50dp"
+        android:textStyle="bold"
+        android:gravity="center"
+        android:textColor="@android:color/white"
+        android:hint="IMIĘ I NAZWISKO LEKARZA"
+        android:textColorHint="#EEFFFFFF"
+        android:layout_marginTop="633dp"
+        android:layout_marginLeft="565dp"
+        />
+
+    <View
+        android:id="@+id/next"
+        android:layout_width="400dp"
+        android:layout_height="200dp"
+        android:layout_gravity="right|bottom"
+        />
+</pl.pharmaway.prezentacjatrilac.view.FixedScaledLayout>
