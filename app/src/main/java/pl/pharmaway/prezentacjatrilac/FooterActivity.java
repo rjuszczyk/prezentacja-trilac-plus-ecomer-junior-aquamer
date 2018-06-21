@@ -98,11 +98,11 @@ public abstract class FooterActivity extends AppCompatActivity {
     }
 
     protected long getDelay() {
-        return 500;
+        return 0;
     }
 
     protected long getDuration() {
-        return 1500;
+        return 0;
     }
 
     protected Cancelable animateIn(long initialDelay, AnimationOperator animationOpeartor, View... paragraphs) {

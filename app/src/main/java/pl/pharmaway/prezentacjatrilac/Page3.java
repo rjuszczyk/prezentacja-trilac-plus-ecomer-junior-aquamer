@@ -10,11 +10,11 @@ import pl.pharmaway.prezentacjatrilac.mvp.Cancelable;
 public class Page3 extends FooterActivity {
     @Override
     protected long getDelay() {
-        return 250;
+        return 0;
     }
     @Override
     protected long getDuration() {
-        return 750;
+        return 0;
     }
 
     @Override
@@ -35,7 +35,7 @@ public class Page3 extends FooterActivity {
 
         if (savedInstanceState == null) {
 
-            Cancelable c = animateInCombined(500,
+            Cancelable c = animateInCombined(0,
                     new Object[]{DefaultAnimations.beforeComeFromRight, DefaultAnimations.translateIn, p3_1},
                     new Object[]{DefaultAnimations.beforeComeFromRight, DefaultAnimations.translateIn, p3_2},
                     new Object[]{DefaultAnimations.beforeComeFromRight, DefaultAnimations.translateIn, p3_3},

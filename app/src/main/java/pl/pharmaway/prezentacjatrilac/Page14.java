@@ -21,7 +21,7 @@ public class Page14 extends FooterActivity {
 
         if (savedInstanceState == null) {
 
-            Cancelable c = animateInCombined(500,
+            Cancelable c = animateInCombined(0,
                     new Object[]{DefaultAnimations.beforeFadeIn, DefaultAnimations.fadeIn, p14_1},
                     new Object[]{DefaultAnimations.beforeFadeIn, DefaultAnimations.fadeIn, p14_2},
                     new Object[]{DefaultAnimations.beforeFadeIn, DefaultAnimations.fadeIn, p14_3},

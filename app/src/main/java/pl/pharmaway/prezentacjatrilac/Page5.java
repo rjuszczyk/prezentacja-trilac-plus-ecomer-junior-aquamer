@@ -20,7 +20,7 @@ public class Page5 extends FooterActivity {
 
         if (savedInstanceState == null) {
 
-            Cancelable c = animateInCombined(500,
+            Cancelable c = animateInCombined(0,
                     new Object[]{DefaultAnimations.beforeComeFromLeft, DefaultAnimations.translateIn, p5_1},
                     new Object[]{DefaultAnimations.beforeComeFromLeft, DefaultAnimations.translateIn, p5_2},
                     new Object[]{DefaultAnimations.beforeComeFromLeft, DefaultAnimations.translateIn, p5_3},

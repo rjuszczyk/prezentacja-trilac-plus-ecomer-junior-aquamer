@@ -25,7 +25,7 @@ public class Page4 extends FooterActivity {
         View p4_9 = findViewById(R.id.p4_9);
 
         if (savedInstanceState == null) {
-            Cancelable c = animateInCombined(500,
+            Cancelable c = animateInCombined(0,
                     new Object[]{DefaultAnimations.beforeFadeAndScaleIn, DefaultAnimations.scaleIn, p4_1},
                     new Object[]{DefaultAnimations.beforeFadeIn, DefaultAnimations.fadeIn, p4_2},
                     new Object[]{DefaultAnimations.beforeFadeIn, DefaultAnimations.fadeIn, p4_3},
