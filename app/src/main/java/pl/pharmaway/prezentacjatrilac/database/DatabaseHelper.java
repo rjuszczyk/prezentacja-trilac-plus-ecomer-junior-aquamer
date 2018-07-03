@@ -14,7 +14,7 @@ import static nl.qbusict.cupboard.CupboardFactory.cupboard;
 
 public class DatabaseHelper extends SQLiteOpenHelper {
 
-    public static final String DATABASE_NAME = "database.db";
+    public static final String DATABASE_NAME = "database2.db";
     public static final int VERSION = 1;
 
     static {
@@ -43,23 +43,18 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     }
 
     public static List<DataRow> rowsForLekarzType(
-            int lekarzType,
             Context context) {
         DatabaseHelper databaseHelper = new DatabaseHelper(context);
         SQLiteDatabase db = databaseHelper.getWritableDatabase();
         return cupboard()
                 .withDatabase(db)
                 .query(DataRow.class)
-                .withSelection(
-                        "lekarzType = ?",
-                        new String[]{String.valueOf(lekarzType)})
-                .groupBy("agent")
+                .groupBy("pm")
                 .list();
     }
 
     public static List<DataRow> rowsForLekarzTypeAndAgent(
-            int lekarzType,
-            String lekarz,
+            String pm,
             Context context) {
         DatabaseHelper databaseHelper = new DatabaseHelper(context);
         SQLiteDatabase db = databaseHelper.getWritableDatabase();
@@ -67,9 +62,8 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                 .withDatabase(db)
                 .query(DataRow.class)
                 .withSelection(
-                        "lekarzType = ? and " +
-                        "agent LIKE ?",
-                        new String[]{String.valueOf(lekarzType), lekarz})
+                        "pm LIKE ?",
+                        new String[]{pm})
                 .groupBy("lekarz")
                 .list();
     }
@@ -94,5 +88,31 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         int count = cursor.getCount();
         cursor.close();
         return count;
+    }
+
+    public static List<DataRow> miastoForPm(Context context, String pm) {
+        DatabaseHelper databaseHelper = new DatabaseHelper(context);
+        SQLiteDatabase db = databaseHelper.getWritableDatabase();
+        return cupboard()
+                .withDatabase(db)
+                .query(DataRow.class)
+                .withSelection(
+                        "pm LIKE ?",
+                        new String[]{pm})
+                .groupBy("m")
+                .list();
+    }
+
+    public static List<DataRow> instytucjaForPmAndM(Context context, String pm, String m) {
+        DatabaseHelper databaseHelper = new DatabaseHelper(context);
+        SQLiteDatabase db = databaseHelper.getWritableDatabase();
+        return cupboard()
+                .withDatabase(db)
+                .query(DataRow.class)
+                .withSelection(
+                        "pm LIKE ? and m LIKE ?",
+                        new String[]{pm, m})
+                .groupBy("m")
+                .list();
     }
 }

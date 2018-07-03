@@ -15,12 +15,31 @@
         app:imageReference="@drawable/page15bg"
         />
 
+
+
     <pl.pharmaway.prezentacjatrilac.view.FixedImageView
         android:layout_width="1920dp"
         android:layout_height="1200dp"
         app:imageReference="@drawable/p15"
         android:id="@+id/p15_1"
         />
+
+    <pl.pharmaway.prezentacjatrilac.view.FixedImageView
+        android:layout_width="513dp"
+        android:layout_height="173dp"
+        app:imageReference="@drawable/header16"
+
+        />
+    <FrameLayout
+        android:layout_width="100dp"
+        android:layout_height="200dp">
+        <pl.pharmaway.prezentacjatrilac.view.FixedImageView
+            android:layout_width="552dp"
+            android:layout_height="200dp"
+            app:imageReference="@drawable/header"
+            />
+    </FrameLayout>
+
 
     <include
         layout="@layout/footer" />

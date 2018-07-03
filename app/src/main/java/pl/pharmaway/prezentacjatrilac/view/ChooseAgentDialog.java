@@ -4,7 +4,6 @@ import android.content.Context;
 
 import java.util.List;
 
-import pl.pharmaway.prezentacjatrilac.Constants;
 import pl.pharmaway.prezentacjatrilac.database.DataRow;
 import pl.pharmaway.prezentacjatrilac.database.DatabaseHelper;
 
@@ -17,12 +16,12 @@ public class ChooseAgentDialog extends ChooseElementDialog {
 
     @Override
     public String getRowText(DataRow row) {
-        return row.agent;
+        return row.pm;
     }
 
     @Override
     public List<DataRow> getRows(Context context) {
-        return DatabaseHelper.rowsForLekarzType(Constants.LEKARZ_TYPE, context);
+        return DatabaseHelper.rowsForLekarzType(context);
     }
 
     public static ChooseAgentDialog create() {
@@ -32,7 +31,7 @@ public class ChooseAgentDialog extends ChooseElementDialog {
 
     @Override
     public void onRowSelected(DataRow row) {
-        mAgentDialogListener.onAgentSelected(row.agent);
+        mAgentDialogListener.onAgentSelected(row.pm);
     }
 
     AgentDialogListener mAgentDialogListener;

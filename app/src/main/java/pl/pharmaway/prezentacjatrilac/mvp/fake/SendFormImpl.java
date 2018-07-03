@@ -24,11 +24,11 @@ public class SendFormImpl implements SendForm {
     public Cancelable sendForm(NotSendDataRow form, final Callback callback) {
 
         final Call<SendResponse> call = prezentacjaApi.send(
-                form.appId,
                 form.createDate,
-                form.lekarzType,
-                form.agent,
-                form.lekarz,
+                form.pm,
+                form.spec,
+                form.m,
+                form.i,
                 form.timeInApp,
                 form.firstChoice
         );
@@ -44,11 +44,6 @@ public class SendFormImpl implements SendForm {
             public void cancel() {
                 isCanceled = true;
                 call.cancel();
-            }
-
-            @Override
-            public int getAnimationLength() {
-                return 0;
             }
         };
 

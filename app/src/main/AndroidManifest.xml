@@ -20,9 +20,10 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".Page1"
+        <activity android:name=".Page0"
             android:launchMode="singleTask"
             />
+        <activity android:name=".Page1" />
         <activity android:name=".Page2" />
         <activity android:name=".Page3" />
         <activity android:name=".Page4" />

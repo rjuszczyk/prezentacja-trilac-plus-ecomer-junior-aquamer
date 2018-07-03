@@ -1,5 +1,6 @@
 package pl.pharmaway.prezentacjatrilac.view;
 
+import android.support.annotation.Nullable;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -29,7 +30,10 @@ public abstract class StoresRecyclerViewAdapter extends RecyclerView.Adapter<Sto
     public StoresRecyclerViewAdapter(List<DataRow> stores) {
         mStores.clear();
         mStoresCache.clear();
-        Collections.sort(stores, getRowComparator());
+        Comparator<DataRow> comparator = getRowComparator();
+        if(comparator != null) {
+            Collections.sort(stores, comparator);
+        }
         mStores.addAll(stores);
         mStoresCache.addAll(mStores);
     }
@@ -72,7 +76,7 @@ public abstract class StoresRecyclerViewAdapter extends RecyclerView.Adapter<Sto
         holder.mStoreName.setText(getTextFromRow(store));
 
         if(isTwoLinesAdapter()) {
-    //        holder.mSecondLine.setText(store.getUlica());
+            //        holder.mSecondLine.setText(store.getUlica());
         }
 
         holder.itemView.setTag(store);
@@ -113,7 +117,10 @@ public abstract class StoresRecyclerViewAdapter extends RecyclerView.Adapter<Sto
     public void setStores(List<DataRow> stores) {
         mStores.clear();
         mStoresCache.clear();
-        Collections.sort(stores, getRowComparator());
+        Comparator<DataRow> comparator = getRowComparator();
+        if(comparator != null) {
+            Collections.sort(stores, comparator);
+        }
         mStores.addAll(stores);
         mStoresCache.addAll(mStores);
         notifyDataSetChanged();

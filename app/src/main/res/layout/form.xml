@@ -8,46 +8,69 @@
     app:fixedWidth="1920dp"
     app:fixedHeight="1200dp"
     >
-    <View
+    <pl.pharmaway.prezentacjatrilac.view.FixedImageView
         android:layout_width="1920dp"
         android:layout_height="1200dp"
-        android:background="#FFF"
-        />
-
-    <pl.pharmaway.prezentacjatrilac.view.FixedImageView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="bottom"
-        app:imageReference="@drawable/form1"
+        app:imageReference="@drawable/form"
         />
 
     <TextView
         android:id="@+id/agent"
         android:layout_width="790dp"
         android:layout_height="98dp"
-        android:background="#999999"
+        android:background="#808080"
         android:textSize="50dp"
         android:textStyle="bold"
         android:gravity="center"
         android:textColor="@android:color/white"
-        android:hint="PRZEDSTAWICIEL MEDYCZNY"
+        android:hint="Przedstawiciel Medyczny"
         android:textColorHint="#EEFFFFFF"
-        android:layout_marginTop="395dp"
+        android:layout_marginTop="250dp"
         android:layout_marginLeft="565dp"
         />
 
     <TextView
-        android:id="@+id/lekarz"
+        android:id="@+id/spec"
         android:layout_width="790dp"
         android:layout_height="98dp"
-        android:background="#999999"
+        android:background="#808080"
         android:textSize="50dp"
         android:textStyle="bold"
         android:gravity="center"
         android:textColor="@android:color/white"
-        android:hint="IMIĘ I NAZWISKO LEKARZA"
+        android:hint="Specjalizacja"
         android:textColorHint="#EEFFFFFF"
-        android:layout_marginTop="633dp"
+        android:layout_marginTop="435dp"
+        android:layout_marginLeft="565dp"
+        />
+
+    <TextView
+        android:id="@+id/miasto"
+        android:layout_width="790dp"
+        android:layout_height="98dp"
+        android:background="#808080"
+        android:textSize="50dp"
+        android:textStyle="bold"
+        android:gravity="center"
+        android:textColor="@android:color/white"
+        android:hint="Miasto instytucji głównej"
+        android:textColorHint="#EEFFFFFF"
+        android:layout_marginTop="625dp"
+        android:layout_marginLeft="565dp"
+        />
+
+    <TextView
+        android:id="@+id/instytucja"
+        android:layout_width="790dp"
+        android:layout_height="98dp"
+        android:background="#808080"
+        android:textSize="50dp"
+        android:textStyle="bold"
+        android:gravity="center"
+        android:textColor="@android:color/white"
+        android:hint="Instytucja"
+        android:textColorHint="#EEFFFFFF"
+        android:layout_marginTop="810dp"
         android:layout_marginLeft="565dp"
         />
 

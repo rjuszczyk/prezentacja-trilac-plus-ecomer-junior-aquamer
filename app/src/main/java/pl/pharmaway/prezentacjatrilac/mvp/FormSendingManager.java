@@ -63,11 +63,6 @@ public class FormSendingManager {
                 subCancelable.cancel();
             }
         }
-
-        @Override
-        public int getAnimationLength() {
-            return 0;
-        }
     }
 
     interface SendingCallback {

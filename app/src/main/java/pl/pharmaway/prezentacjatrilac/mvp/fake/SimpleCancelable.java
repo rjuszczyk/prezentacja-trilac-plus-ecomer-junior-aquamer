@@ -20,9 +20,4 @@ public class SimpleCancelable implements Cancelable {
         doOnCancel.run();
         isCanceled = true;
     }
-
-    @Override
-    public int getAnimationLength() {
-        return 0;
-    }
 }

@@ -14,9 +14,9 @@ import android.view.ViewGroup;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.EditText;
 
+import java.util.Comparator;
 import java.util.List;
 
-import pl.pharmaway.prezentacjatrilac.Constants;
 import pl.pharmaway.prezentacjatrilac.R;
 import pl.pharmaway.prezentacjatrilac.database.DataRow;
 import pl.pharmaway.prezentacjatrilac.database.DatabaseHelper;
@@ -38,11 +38,11 @@ public class ChooseElementDialog extends BaseDialog implements StoresRecyclerVie
     }
 
     public String getRowText(DataRow row) {
-        return row.agent;
+        return row.pm;
     }
 
     public List<DataRow> getRows(Context context) {
-        return DatabaseHelper.rowsForLekarzType(Constants.LEKARZ_TYPE, context);
+        return DatabaseHelper.rowsForLekarzType(context);
     }
 
     public void onRowSelected(DataRow row) {
@@ -123,6 +123,14 @@ public class ChooseElementDialog extends BaseDialog implements StoresRecyclerVie
             mRecyclerView.setLayoutManager(manager);
 
             mStoresRecyclerViewAdapter = new StoresRecyclerViewAdapter() {
+
+                @Override
+                public Comparator<DataRow> getRowComparator() {
+                    if(ChooseElementDialog.this instanceof ChooseSpecDialog) {
+                        return null;
+                    }
+                    return super.getRowComparator();
+                }
 
                 @Override
                 public String getTextFromRow(DataRow row) {

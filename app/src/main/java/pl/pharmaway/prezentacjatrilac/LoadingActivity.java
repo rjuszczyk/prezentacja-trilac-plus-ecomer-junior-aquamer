@@ -76,7 +76,7 @@ public class LoadingActivity extends FooterActivity implements LoadingView {
 
     @Override
     public void goToNext() {
-        Intent intent = new Intent(this, Page1.class);
+        Intent intent = new Intent(this, Page0.class);
         startActivity(intent);
     }
 }

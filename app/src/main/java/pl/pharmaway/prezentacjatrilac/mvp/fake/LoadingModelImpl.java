@@ -49,11 +49,6 @@ public class LoadingModelImpl implements LoadingModel {
                 isCanceled = true;
                 call.cancel();
             }
-
-            @Override
-            public int getAnimationLength() {
-                return 0;
-            }
         };
 
         call.enqueue(new Callback<DataVersion>() {
@@ -62,9 +57,9 @@ public class LoadingModelImpl implements LoadingModel {
             @Override
             public void onResponse(Response<DataVersion> response) {
                 if (!cancelable.isCanceled()) {
-                    int version = sharedPreferences.getInt("version", 0);
+                    int version = sharedPreferences.getInt("version2", 0);
                     int newVersion = response.body().getVersion();
-                    sharedPreferences.edit().putInt("version", newVersion).commit();
+                    sharedPreferences.edit().putInt("version2", newVersion).commit();
                     checkUpdateCallback.onLoaded(newVersion >version);
                 }
             }
@@ -92,11 +87,6 @@ public class LoadingModelImpl implements LoadingModel {
             public void cancel() {
                 isCanceled = true;
                 call.cancel();
-            }
-
-            @Override
-            public int getAnimationLength() {
-                return 0;
             }
         };
 

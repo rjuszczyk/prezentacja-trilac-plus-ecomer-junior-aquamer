@@ -22,6 +22,13 @@
         android:id="@+id/p16_1"
         />
 
+    <pl.pharmaway.prezentacjatrilac.view.FixedImageView
+        android:layout_width="513dp"
+        android:layout_height="173dp"
+        app:imageReference="@drawable/header16"
+
+        />
+
     <include
         layout="@layout/footer" />
 </pl.pharmaway.prezentacjatrilac.view.FixedScaledLayout>

@@ -17,12 +17,16 @@ import pl.pharmaway.prezentacjatrilac.database.DatabaseHelper;
 import pl.pharmaway.prezentacjatrilac.database.NotSendDataRow;
 import pl.pharmaway.prezentacjatrilac.mvp.fake.FormDataRepositoryImpl;
 import pl.pharmaway.prezentacjatrilac.view.ChooseAgentDialog;
-import pl.pharmaway.prezentacjatrilac.view.ChooseLekarzDialog;
+import pl.pharmaway.prezentacjatrilac.view.ChooseInstytucjaDialog;
+import pl.pharmaway.prezentacjatrilac.view.ChooseMiastoDialog;
+import pl.pharmaway.prezentacjatrilac.view.ChooseSpecDialog;
 
 public class FormActivity extends AppCompatActivity
-implements ChooseAgentDialog.AgentDialogListener, ChooseLekarzDialog.LekarzDialogListener {
+        implements ChooseAgentDialog.AgentDialogListener, ChooseSpecDialog.LekarzDialogListener, ChooseMiastoDialog.MiastoDialogListener, ChooseInstytucjaDialog.InstytucjaDialogListener {
     TextView agent;
-    TextView lekarz;
+    TextView spec;
+    TextView miasto;
+    TextView instytucja;
     View next;
     private FormDataRepositoryImpl repository;
 
@@ -35,15 +39,22 @@ implements ChooseAgentDialog.AgentDialogListener, ChooseLekarzDialog.LekarzDialo
         repository = new FormDataRepositoryImpl(this, database);
 
         agent = findViewById(R.id.agent);
-        lekarz = findViewById(R.id.lekarz);
+        spec = findViewById(R.id.spec);
+        miasto = findViewById(R.id.miasto);
+        instytucja = findViewById(R.id.instytucja);
         next = findViewById(R.id.next);
 
         if(savedInstanceState==null) {
-            lekarz.setEnabled(false);
+            spec.setEnabled(false);
         } else {
             agent.setText(savedInstanceState.getString("agent"));
-            lekarz.setText(savedInstanceState.getString("lekarz"));
-            lekarz.setEnabled(savedInstanceState.getBoolean("lekarz_enabled"));
+            spec.setText(savedInstanceState.getString("spec"));
+            miasto.setText(savedInstanceState.getString("miasto"));
+            instytucja.setText(savedInstanceState.getString("instytucja"));
+
+            spec.setEnabled(savedInstanceState.getBoolean("spec_enabled"));
+            miasto.setEnabled(savedInstanceState.getBoolean("miasto_enabled"));
+            instytucja.setEnabled(savedInstanceState.getBoolean("instytucja_enabled"));
         }
 
         updateNext();
@@ -55,10 +66,25 @@ implements ChooseAgentDialog.AgentDialogListener, ChooseLekarzDialog.LekarzDialo
             }
         });
 
-        lekarz.setOnClickListener(new View.OnClickListener() {
+        spec.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                ChooseLekarzDialog.create(getAgentText()).show(getSupportFragmentManager(), "tag");
+                ChooseSpecDialog.create().show(getSupportFragmentManager(), "tag");
+            }
+        });
+
+        miasto.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                ChooseMiastoDialog.create(agent.getText().toString()).show(getSupportFragmentManager(), "tag");
+            }
+        });
+
+
+        instytucja.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                ChooseInstytucjaDialog.create(agent.getText().toString(), miasto.getText().toString()).show(getSupportFragmentManager(), "tag");
             }
         });
 
@@ -70,11 +96,12 @@ implements ChooseAgentDialog.AgentDialogListener, ChooseLekarzDialog.LekarzDialo
 
                 NotSendDataRow notSendDataRow = new NotSendDataRow();
 
-                notSendDataRow.agent = agent.getText().toString();
-                notSendDataRow.lekarz = lekarz.getText().toString();
+                notSendDataRow.pm = agent.getText().toString();
+                notSendDataRow.spec = spec.getText().toString();
+                notSendDataRow.m = miasto.getText().toString();
+                notSendDataRow.i = instytucja.getText().toString();
                 notSendDataRow.appId = Constants.APP_ID;
                 notSendDataRow.createDate = new Date().toString();
-                notSendDataRow.lekarzType = Constants.LEKARZ_TYPE;
                 notSendDataRow.timeInApp = timeSpendInApp.getTimeFormatted();
                 notSendDataRow.firstChoice = firstChoice.getFirstChoice();
 
@@ -82,7 +109,7 @@ implements ChooseAgentDialog.AgentDialogListener, ChooseLekarzDialog.LekarzDialo
 
                 repository.storeNotSendForm(notSendDataRow);
 
-                Intent intent = new Intent(FormActivity.this, PageSummary.class);
+                Intent intent = new Intent(FormActivity.this, LoadingActivity.class);
                 startActivity(intent);
             }
         });
@@ -91,14 +118,33 @@ implements ChooseAgentDialog.AgentDialogListener, ChooseLekarzDialog.LekarzDialo
     @Override
     public void onAgentSelected(String agent) {
         this.agent.setText(agent);
-        this.lekarz.setEnabled(true);
-        this.lekarz.setText("");
+        this.spec.setEnabled(true);
+        this.spec.setText("");
+        this.miasto.setText("");
+        this.instytucja.setText("");
         updateNext();
     }
 
     @Override
-    public void onLekarzSelected(String lekarz) {
-        this.lekarz.setText(lekarz);
+    public void onSpecSelected(String lekarz) {
+        this.spec.setText(lekarz);
+        this.miasto.setEnabled(true);
+        this.miasto.setText("");
+        this.instytucja.setText("");
+        updateNext();
+    }
+
+    @Override
+    public void onMiastoSelected(String miasto) {
+        this.miasto.setText(miasto);
+        this.instytucja.setEnabled(true);
+        this.instytucja.setText("");
+        updateNext();
+    }
+
+    @Override
+    public void onInstytucjaSelected(String instytucja) {
+        this.instytucja.setText(instytucja);
         updateNext();
     }
 
@@ -107,14 +153,20 @@ implements ChooseAgentDialog.AgentDialogListener, ChooseLekarzDialog.LekarzDialo
     }
 
     void updateNext() {
-        next.setEnabled(!TextUtils.isEmpty(this.lekarz.getText()));
+        next.setEnabled(!TextUtils.isEmpty(this.instytucja.getText()));
     }
 
     @Override
     public void onSaveInstanceState(Bundle outState) {
         super.onSaveInstanceState(outState);
         outState.putString("agent", agent.getText().toString());
-        outState.putString("lekarz", lekarz.getText().toString());
-        outState.putBoolean("lekarz_enabled", lekarz.isEnabled());
+        outState.putString("spec", spec.getText().toString());
+        outState.putString("miasto", miasto.getText().toString());
+        outState.putString("instytucja", instytucja.getText().toString());
+        outState.putBoolean("spec_enabled", spec.isEnabled());
+        outState.putBoolean("miasto_enabled", miasto.isEnabled());
+        outState.putBoolean("instytucja_enabled", instytucja.isEnabled());
     }
+
+
 }
